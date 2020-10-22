@@ -16,4 +16,3 @@ def print_api(data):
 
     print(response.text)
 print_api("I went to Seattle.")
-git push

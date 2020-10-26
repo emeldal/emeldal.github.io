@@ -1,18 +1,22 @@
+"""Testing web APIs with HTTP GET method"""
+
 import json
 import sys
 import requests
-def print_api(data):
+def print_api(phrase):
+    url = "https://webit-text-analytics.p.rapidapi.com/key-phrases"
 
-    url = "https://rapidapi.p.rapidapi.com/entities/recognition/general"
+    querystring = {"language":"fr","q":phrase}
 
-    payload = "{\"documents\": [{\"id\": \"1\",\"language\": \"fr\",\"text\": \""+data+"\"},]}"
+    payload = ""
     headers = {
-        'content-type': "application/json",
-        'x-rapidapi-host': "microsoft-text-analytics1.p.rapidapi.com",
-        'x-rapidapi-key': "f00443d856mshef111d13f0d92bbp17c375jsn86f42c1b92b1"
+        'x-rapidapi-host': "webit-text-analytics.p.rapidapi.com",
+        'x-rapidapi-key': "f00443d856mshef111d13f0d92bbp17c375jsn86f42c1b92b1",
+        'content-type': "application/x-www-form-urlencoded"
         }
 
-    response = requests.request("POST", url, data=payload, headers=headers)
+    response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
 
     print(response.text)
-print_api("I went to Seattle.")
+
+print_api ("Je vais en Russie.")
